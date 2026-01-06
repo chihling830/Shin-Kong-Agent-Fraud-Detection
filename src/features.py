@@ -13,11 +13,11 @@ from sklearn.preprocessing import MinMaxScaler
 def engineer(input_path: str, output_path: str) -> None:
     df = pd.read_csv(input_path)
 
-    # 1️⃣ One-Hot
+    # One-Hot
     cat_cols = df.select_dtypes(include=['object', 'category']).columns
     df = pd.get_dummies(df, columns=cat_cols, drop_first=True)
 
-    # 2️⃣ Min-Max
+    # Min-Max
     num_cols = df.select_dtypes(include=['int64', 'float64']).columns
     scaler = MinMaxScaler()
     df[num_cols] = scaler.fit_transform(df[num_cols])
