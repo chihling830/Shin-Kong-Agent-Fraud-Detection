@@ -9,7 +9,7 @@ import argparse, joblib, pandas as pd
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import classification_report
 
-# 模型們
+# 模型
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
@@ -37,7 +37,7 @@ def train(train_csv: str, model_path: str, algo: str) -> None:
 
     model = ALGO_MAP[algo]
 
-    # GridSearch 範例（logit C 值）
+    # GridSearch
     if algo == "logit":
         param = {"C":[0.01,0.1,1,10,100]}
         model = GridSearchCV(model, param, cv=5, scoring="f1")
